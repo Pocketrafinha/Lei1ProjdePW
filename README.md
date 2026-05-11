@@ -4,3 +4,6 @@ Projeto para a disciplina de Programação para a Web da licenciatura em Engenha
 ## Autores
 Rafael Domingos 250000370
 João Freitas 250001177
+
+# Ideias
+Vamos construir um site onde consigamos avaliar fotos provenientes da API Unsplash 
