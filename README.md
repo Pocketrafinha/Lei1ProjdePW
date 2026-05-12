@@ -6,4 +6,4 @@ Rafael Domingos 250000370
 João Freitas 250001177
 
 # Ideias
-Vamos construir um site onde consigamos avaliar fotos provenientes da API Unsplash 
+Vamos construir um site onde consigamos avaliar fotos provenientes do Unsplash API
