@@ -13,6 +13,17 @@ header, footer {
             color:bisque;
        }
 
+#searchBar {
+  width: 500px;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 1px solid #dfe1e5;
+  border-radius: 24px;
+  outline: none;
+  background-color: white;
+}
+
+
 #fotos { 
         display: flex;
         justify-content: space-around;

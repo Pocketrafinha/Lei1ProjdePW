@@ -1,10 +1,19 @@
 const API_KEY = "6aYxijUti77ez30M1KUwXVHpVBGBDhtUaBpFzh5VcIc";
 
+const searchBar = document.getElementById("searchBar");
+
+searchBar.addEventListener("input", () => {
+
+  const query = searchBar.value;
+
+  console.log(query);
+
+  unsplashRequest(query);
+
+});
 
 
-unsplashRequest();
-
-function unsplashRequest()
+function unsplashRequest(query)
 {
     let url = `https://api.unsplash.com/search/photos/?client_id=${API_KEY}&query=${query}`;
 
@@ -21,7 +30,6 @@ function unsplashRequest()
       });
 
     }
-
 
 const elemBtn = document.querySelector('button');
 const elemspan = document.querySelector('span');
