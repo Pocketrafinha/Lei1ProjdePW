@@ -1,45 +1,53 @@
 const API_KEY = "6aYxijUti77ez30M1KUwXVHpVBGBDhtUaBpFzh5VcIc";
-
 const searchBar = document.getElementById("searchBar");
+const containerFotos = document.getElementById("fotos");
 
 searchBar.addEventListener("input", () => {
-
-  const query = searchBar.value;
-
-  console.log(query);
-
-  unsplashRequest(query);
-
+    const query = searchBar.value;
+    unsplashRequest(query);
 });
 
+function unsplashRequest(query) {
+    let url = `https://api.unsplash.com/search/photos/?client_id=${API_KEY}&query=${query}&per_page=9`;
 
-function unsplashRequest(query)
-{
-    let url = `https://api.unsplash.com/search/photos/?client_id=${API_KEY}&query=${query}`;
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            processaResposta(data);     
+        })
+        .catch(error => {
+            console.error('Aconteceu um erro na operação de carregamento dos dados:', error);
+        });
+}
 
+function processaResposta(data) {
+    containerFotos.innerHTML = "";
 
-   fetch(url)
-    .then( function(response) { 
-          return response.json();
-    })
-    .then( function(data) {
-           processaResposta( data);     
-    }  )
-    .catch(error => {
-        console.error('Aconteceu um erro na operação de carregamento dos dados:', error);
-      });
+    data.results.forEach(foto => {
+        const figure = document.createElement("figure");
+        const img = document.createElement("img");
+        img.src = foto.urls.small;
+        img.alt = foto.alt_description;
 
-    }
+        const figcaption = document.createElement("figcaption");
+        const autor = document.createElement("span");
+        autor.textContent = foto.user.name;
 
-const elemBtn = document.querySelector('button');
-const elemspan = document.querySelector('span');
+        figcaption.appendChild(autor);
+        figure.appendChild(img);
+        figure.appendChild(figcaption);
 
+        containerFotos.appendChild(figure);
+    });
+}
+
+const elemBtn = document.getElementById('elemBtn');
+const elemspan = document.querySelector('#elemBtn span');
 let likes = 0;
-elemBtn.addEventListener('click', DarMaisLikes);
 
-function DarMaisLikes(){
-likes++;
-
-elemspan.textContent = likes;
-
+if(elemBtn) {
+    elemBtn.addEventListener('click', () => {
+        likes++;
+        elemspan.textContent = likes;
+    });
 }
